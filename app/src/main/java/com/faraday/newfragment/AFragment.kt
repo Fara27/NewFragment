@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import com.faraday.newfragment.databinding.FragmentABinding
 
 class AFragment : Fragment() {
@@ -26,10 +24,8 @@ class AFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.moveBtn.setOnClickListener {
-            childFragmentManager.commit {
-                setReorderingAllowed(true)
-                add<BFragment>(R.id.fragment_container_view)
-            }
+            val activity = requireActivity() as MainActivity
+            activity.navigate(BFragment())
         }
     }
 
